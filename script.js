@@ -4,11 +4,29 @@ function loadFile(event, inputId) {
 
     if (file.type.startsWith('image/')) {
         reader.onload = function(event) {
-            const arrayBuffer = event.target.result;
-            const wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
-            document.getElementById(inputId).value = CryptoJS.SHA256(wordArray).toString();
+            const img = new Image();
+            img.onload = function() {
+                // scale down the image
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const maxSize = 100;  // max size for either width or height
+                const ratio = maxSize / Math.max(img.width, img.height);
+                canvas.width = img.width * ratio;
+                canvas.height = img.height * ratio;
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                // get the image data
+                const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+
+                // convert the data to a word array
+                const wordArray = CryptoJS.lib.WordArray.create(data);
+
+                // hash the word array and set the result
+                document.getElementById(inputId).value = CryptoJS.SHA256(wordArray).toString();
+            };
+            img.src = event.target.result;
         };
-        reader.readAsArrayBuffer(file);
+        reader.readAsDataURL(file);
     } else {
         reader.onload = function(event) {
             const text = event.target.result;
