@@ -27,6 +27,8 @@ h1 {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .text-input {
@@ -50,6 +52,8 @@ h1 {
     border-radius: 4px;
     padding: 10px 20px;
     cursor: pointer;
+    display: block;
+    width: 100%;
 }
 
 .btn:hover {
@@ -77,7 +81,7 @@ h1 {
 }
 
 @media (min-width: 768px) {
-    .text-input, .file-upload, #output {
-        width: 600px;
+    .screen, .text-input, .file-upload, #output, .btn {
+        max-width: 600px;
     }
 }
