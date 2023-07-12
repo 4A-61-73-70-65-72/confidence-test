@@ -2,30 +2,7 @@
 <html>
 <head>
     <title>SHA256 Hash Comparator</title>
-    <style>
-        #container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        textarea {
-            width: 300px;
-            height: 150px;
-            margin-bottom: 10px;
-        }
-
-        #output {
-            margin-top: 10px;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 </head>
 
@@ -33,21 +10,21 @@
     <div id="container">
         <h1>SHA256 Hash Comparator</h1>
         <form id="form1">
-            <div id="screen1">
-                <input type="file" id="file1" onchange="loadFile(event, 'input1')">
-                <textarea id="input1" placeholder="Enter text 1 here..."></textarea>
-                <button type="button" onclick="next()">Send Verification Request</button>
+            <div id="screen1" class="screen">
+                <input type="file" id="file1" onchange="loadFile(event, 'input1')" class="file-upload">
+                <textarea id="input1" placeholder="Enter text 1 here..." class="text-input"></textarea>
+                <button type="button" onclick="next()" class="btn">Send Verification Request</button>
             </div>
         </form>
         <form id="form2">
-            <div id="screen2" class="hidden">
-                <input type="file" id="file2" onchange="loadFile(event, 'input2')">
-                <textarea id="input2" placeholder="Enter text 2 here..."></textarea>
-                <button type="button" onclick="compareHashes()">Compare Hashes</button>
+            <div id="screen2" class="screen hidden">
+                <input type="file" id="file2" onchange="loadFile(event, 'input2')" class="file-upload">
+                <textarea id="input2" placeholder="Enter text 2 here..." class="text-input"></textarea>
+                <button type="button" onclick="compareHashes()" class="btn">Compare Hashes</button>
             </div>
         </form>
         <div id="output"></div>
-        <button onclick="reset()">Reset</button>
+        <button onclick="reset()" class="btn reset-btn">Reset</button>
     </div>
     <script src="script.js"></script>
 </body>
