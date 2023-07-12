@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SHA256 Hash Comparator</title>
+    <title>Are they the same?</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
 </head>
@@ -9,20 +9,16 @@
 <body>
     <div id="container">
         <h1>SHA256 Hash Comparator</h1>
-        <form id="form1">
-            <div id="screen1" class="screen">
-                <input type="file" id="file1" onchange="loadFile(event, 'input1')" class="file-upload">
-                <textarea id="input1" placeholder="Enter text 1 here..." class="text-input"></textarea>
-                <button type="button" onclick="next()" class="btn">Send Verification Request</button>
-            </div>
-        </form>
-        <form id="form2">
-            <div id="screen2" class="screen hidden">
-                <input type="file" id="file2" onchange="loadFile(event, 'input2')" class="file-upload">
-                <textarea id="input2" placeholder="Enter text 2 here..." class="text-input"></textarea>
-                <button type="button" onclick="compareHashes()" class="btn">Compare Hashes</button>
-            </div>
-        </form>
+        <div id="screen1" class="screen">
+            <input type="file" id="file1" onchange="loadFile(event, 'input1')" class="file-upload">
+            <textarea id="input1" placeholder="Enter text 1 here..." class="text-input"></textarea>
+            <button type="button" onclick="next()" class="btn">Send Verification Request</button>
+        </div>
+        <div id="screen2" class="screen hidden">
+            <input type="file" id="file2" onchange="loadFile(event, 'input2')" class="file-upload">
+            <textarea id="input2" placeholder="Enter text 2 here..." class="text-input"></textarea>
+            <button type="button" onclick="compareHashes()" class="btn">Compare Hashes</button>
+        </div>
         <div id="output"></div>
         <button onclick="reset()" class="btn reset-btn">Reset</button>
     </div>
