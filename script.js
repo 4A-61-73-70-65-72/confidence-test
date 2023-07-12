@@ -6,22 +6,17 @@ function loadFile(event, inputId) {
         reader.onload = function(event) {
             const img = new Image();
             img.onload = function() {
-                // scale down the image
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d');
-                const maxSize = 100;  // max size for either width or height
+                const maxSize = 100; 
                 const ratio = maxSize / Math.max(img.width, img.height);
                 canvas.width = img.width * ratio;
                 canvas.height = img.height * ratio;
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-                // get the image data
                 const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-
-                // convert the data to a word array
                 const wordArray = CryptoJS.lib.WordArray.create(data);
 
-                // hash the word array and set the result
                 document.getElementById(inputId).value = CryptoJS.SHA256(wordArray).toString();
             };
             img.src = event.target.result;
@@ -31,12 +26,11 @@ function loadFile(event, inputId) {
         reader.onload = function(event) {
             const text = event.target.result;
             const plainText = text.replace(/\s+/g, ' ');
-            document.getElementById(inputId).value = CryptoJS.SHA256(plainText).toString();
+            document.getElementById(inputId).value = plainText;
         };
         reader.readAsText(file);
     }
 }
-
 function next() {
     document.getElementById('screen1').classList.add('hidden');
     document.getElementById('screen2').classList.remove('hidden');
