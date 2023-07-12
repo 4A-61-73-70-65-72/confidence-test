@@ -1,11 +1,19 @@
 function loadFile(event, inputId) {
     const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            let text = e.target.result;
-            text = text.replace(/\s+/g, ' ').trim();
-            document.getElementById(inputId).value = text;
+    const reader = new FileReader();
+
+    if (file.type.startsWith('image/')) {
+        reader.onload = function(event) {
+            const arrayBuffer = event.target.result;
+            const wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
+            document.getElementById(inputId).value = CryptoJS.SHA256(wordArray).toString();
+        };
+        reader.readAsArrayBuffer(file);
+    } else {
+        reader.onload = function(event) {
+            const text = event.target.result;
+            const plainText = text.replace(/\s+/g, ' ');
+            document.getElementById(inputId).value = CryptoJS.SHA256(plainText).toString();
         };
         reader.readAsText(file);
     }
