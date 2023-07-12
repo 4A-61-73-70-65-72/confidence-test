@@ -35,4 +35,6 @@ function reset() {
     document.getElementById('output').innerText = '';
     document.getElementById('screen1').classList.remove('hidden');
     document.getElementById('screen2').classList.add('hidden');
+    document.getElementById('form1').reset();
+    document.getElementById('form2').reset();
 }
