@@ -17,7 +17,7 @@ function loadFile(event, inputId) {
                 const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
                 const wordArray = CryptoJS.lib.WordArray.create(data);
 
-                document.getElementById(inputId).value = CryptoJS.SHA256(wordArray).toString();
+                document.getElementById(inputId).value = "Done! Please proceed to next step.";
             };
             img.src = event.target.result;
         };
