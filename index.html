@@ -32,16 +32,20 @@
 <body>
     <div id="container">
         <h1>SHA256 Hash Comparator</h1>
-        <div id="screen1">
-            <input type="file" id="file1" onchange="loadFile(event, 'input1')">
-            <textarea id="input1" placeholder="Enter text 1 here..."></textarea>
-            <button onclick="next()">Send Verification Request</button>
-        </div>
-        <div id="screen2" class="hidden">
-            <input type="file" id="file2" onchange="loadFile(event, 'input2')">
-            <textarea id="input2" placeholder="Enter text 2 here..."></textarea>
-            <button onclick="compareHashes()">Compare Hashes</button>
-        </div>
+        <form id="form1">
+            <div id="screen1">
+                <input type="file" id="file1" onchange="loadFile(event, 'input1')">
+                <textarea id="input1" placeholder="Enter text 1 here..."></textarea>
+                <button type="button" onclick="next()">Send Verification Request</button>
+            </div>
+        </form>
+        <form id="form2">
+            <div id="screen2" class="hidden">
+                <input type="file" id="file2" onchange="loadFile(event, 'input2')">
+                <textarea id="input2" placeholder="Enter text 2 here..."></textarea>
+                <button type="button" onclick="compareHashes()">Compare Hashes</button>
+            </div>
+        </form>
         <div id="output"></div>
         <button onclick="reset()">Reset</button>
     </div>
